@@ -1,0 +1,56 @@
+body {
+	padding-top:  60px;
+}
+
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.sized {
+	width: 120px;
+}
+
+.centered {
+	text-align: center;
+}
+
+.title {
+	margin-top: 40px;
+}
+
+.searchbox {
+ 	height: 30px; 
+	border-radius: 4px;
+	border: solid 1px #ccc;
+	
+}
+
+.police {
+	font-style: Helvetica;
+	font-size: 12px;
+}
+
+.add {
+	padding-top: 4px;
+}
+
+
+.hide {
+	
+}
+#heading2 {
+	display: inline;
+	
+}
+
+/* input[type="email"],
+input[type="password"],
+input[type="number"] {
+	
+	margin-left: 0; 
+	margin-right: 2px;
+} */
+
+
