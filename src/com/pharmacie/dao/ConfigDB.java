@@ -21,7 +21,7 @@ public class ConfigDB {
 		Connection connection = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/pharmacie", "root", "root");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/db_pharmacie", "root", "root");
 
 		} catch (Exception e) {
 			e.printStackTrace();
