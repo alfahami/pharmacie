@@ -45,7 +45,8 @@ public class PharmaController {
     @PostMapping("/handleSubmit")
     public String submitForm(@Valid Drug drug, BindingResult bindingResult) {
         if (pharmaService.isDrugAdded(drug.getName()))
-            bindingResult.rejectValue("name", "", "Drug name already exist");
+
+           //(Because it stops the update) bindingResult.rejectValue("name", "", "Drug name already exist");
         if (bindingResult.hasErrors())
             return "form";
         pharmaService.submitForm(drug);
