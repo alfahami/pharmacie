@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.pharma.pharmacy.Constants;
 import com.pharma.pharmacy.pojo.Drug;
 import com.pharma.pharmacy.service.PharmaService;
 
@@ -39,19 +40,15 @@ public class PharmaController {
 
     @GetMapping("/editDrug")
     public String editDrug(Model model, @RequestParam(required = true) String id) {
-            Drug drug = pharmaService.getDrugById(id);
-            model.addAttribute("drug", drug == null ? new Drug() : drug);
+            model.addAttribute("drug", pharmaService.getDrugById(id) );
             return "form";
     }
 
     @PostMapping("/handleSubmit")
     public String submitForm(@Valid Drug drug, BindingResult bindingResult) {
-
          if(bindingResult.hasErrors()) return "form";
-         pharmaService.add(drug);
+         pharmaService.submitForm(drug);
         return "redirect:/drugs";
 
     }
-
-    
 }
