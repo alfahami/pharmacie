@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pharma.pharmacy.Constants;
 import com.pharma.pharmacy.pojo.Drug;
 import com.pharma.pharmacy.repository.PharmaRepository;
 
@@ -14,19 +15,19 @@ public class PharmaService {
     @Autowired
     PharmaRepository pharmaRepository;
 
-    public void add(Drug drug){
+    public void addDrug(Drug drug){
         this.pharmaRepository.addDrug(drug);
     }
 
-    public void update(int index, Drug drug) {
+    public void updateDrug(int index, Drug drug) {
         this.pharmaRepository.updateDrug(index, drug);
     }
 
-    public Drug get(int index) {
+    public Drug getDrug(int index) {
         return this.pharmaRepository.getDrug(index);
     }
 
-    public void delete(int index) {
+    public void deleteDrug(int index) {
         this.pharmaRepository.removeDrug(index);
     }
 
@@ -34,10 +35,22 @@ public class PharmaService {
         return this.pharmaRepository.getDrugs();
     }
 
+    public void submitForm(Drug drug) {
+        int index = getDrugIndex(drug.getId());
+         if(index != Constants.NOT_FOUND) 
+            updateDrug(index, drug);
+         else addDrug(drug);
+    }
+
     public Drug getDrugById(String id) {
-        for (Drug drug : getDrugs()) {
-            if(drug.getId().equals(id)) return drug;
+        int index = getDrugIndex(id);
+        return index == Constants.NOT_FOUND ? new Drug() : getDrug(index);
+    }
+
+    public int getDrugIndex(String id) {
+        for (int i = 0; i < getDrugs().size(); i++) {
+            if(getDrugs().get(i).getId().equals(id)) return i;
         }
-        return null;
+        return Constants.NOT_FOUND;
     }
 }
