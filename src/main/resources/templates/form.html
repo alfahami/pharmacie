@@ -7,17 +7,19 @@
   <body>
     <div class="topnav">
         <a th:href="@{/home}">Home</a>
-      <a th:href="@{/}">Add Drug</a>
+      <a th:href="@{/addDrug}">Add Drug</a>
     </div>   
     <div class="container">
       <h2> Drug Portal </h2>
-      <form method="post" th:object="${grade}" th:action="@{/handleSubmit}"> 
+      <form method="post" th:object="${drug}" th:action="@{/handleSubmit}"> 
         <p style="color:red" th:errors="*{name}"> </p>
         <input type="text" placeholder="Name" th:field="*{name}">
-        <p style="color:red" th:errors="*{score}"> </p>
-        <input type="text" placeholder="Score" th:field="*{score}">  
-        <p style="color:red" th:errors="*{subject}"> </p>
-        <input type="text" placeholder="Subject" th:field="*{subject}">
+        <p style="color:red" th:errors="*{price}"> </p>
+        <input type="text" placeholder="Price" th:field="*{price}">  
+        <p style="color:red" th:errors="*{quantity}"> </p>
+        <input type="text" placeholder="Quantity" th:field="*{quantity}">
+        <p style="color:red;" th:errors="*{barCode}"></p>
+        <input type="text" placeholder="Bar Code" th:field="*{barCode}">
         <input type="hidden" th:field="*{id}">
         <br><br>
         <input type="submit" value="Submit">
