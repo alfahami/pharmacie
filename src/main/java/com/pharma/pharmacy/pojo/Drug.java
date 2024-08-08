@@ -28,7 +28,6 @@ public class Drug {
         this.id = UUID.randomUUID().toString();
     }
     
-
     public String getId() {
         return this.id;
     }
