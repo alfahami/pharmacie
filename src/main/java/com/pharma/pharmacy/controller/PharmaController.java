@@ -19,6 +19,12 @@ public class PharmaController {
     @Autowired
     PharmaService pharmaService;
 
+    @GetMapping("/home")
+    public String getDrugs(Model model) {
+        model.addAttribute("drugs", pharmaService.getDrugs());
+        return "home";
+    }
+    
     @GetMapping("/")
     public String getHome() {
         return "redirect:/home";
@@ -34,13 +40,8 @@ public class PharmaController {
     public String submitForm(@Valid Drug drug, BindingResult bindingResult) {
 
          if(bindingResult.hasErrors()) return "form";
+         pharmaService.add(drug);
         return "redirect:/home";
 
-    }
-
-    @GetMapping("/home")
-    public String getDrugs(Model model) {
-        model.addAttribute("drugs", pharmaService.getDrugs());
-        return "home";
     }
 }
