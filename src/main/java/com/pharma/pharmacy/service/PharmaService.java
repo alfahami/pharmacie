@@ -33,4 +33,11 @@ public class PharmaService {
     public List<Drug> getDrugs() {
         return this.pharmaRepository.getDrugs();
     }
+
+    public Drug getDrugById(String id) {
+        for (Drug drug : getDrugs()) {
+            if(drug.getId().equals(id)) return drug;
+        }
+        return null;
+    }
 }

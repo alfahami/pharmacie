@@ -21,7 +21,7 @@ public class PharmaController {
     PharmaService pharmaService;
 
     @GetMapping("/drugs")
-    public String getDrugs(Model model, @RequestParam(required = false) String id) {
+    public String getDrugs(Model model) {
         model.addAttribute("drugs", pharmaService.getDrugs());
         return "home";
     }
@@ -37,6 +37,13 @@ public class PharmaController {
         return "form";
     }
 
+    @GetMapping("/editDrug")
+    public String editDrug(Model model, @RequestParam(required = true) String id) {
+            Drug drug = pharmaService.getDrugById(id);
+            model.addAttribute("drug", drug == null ? new Drug() : drug);
+            return "form";
+    }
+
     @PostMapping("/handleSubmit")
     public String submitForm(@Valid Drug drug, BindingResult bindingResult) {
 
@@ -45,4 +52,6 @@ public class PharmaController {
         return "redirect:/drugs";
 
     }
+
+    
 }
