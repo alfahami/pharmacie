@@ -16,17 +16,17 @@
       <table id="table"> 
         <tr>
           <th>Name</th>
-          <th>Price</th>
+          <th>Unit Price</th>
           <th>Quantity</th>
           <th>Supplier</th>
           <th>Total Price</th>
         </tr>
         <tr th:each="drug: ${drugs}">
           <td th:text="${drug.name}"></td>
-          <td th:text="${drug.price}"></td>
+          <td th:text="${#numbers.formatCurrency(drug.price)}"></td>
           <td th:text="${drug.quantity}"></td>
           <td th:text="${drug.supplier}"></td>
-          <td th:text="${#numbers.formatDecimal({drug.price * drug.quantity},3, 2)}"></td>
+          <td th:text="${#numbers.formatCurrency(#numbers.formatDecimal({drug.price * drug.quantity},3, 2))}"></td>
           <td> <a role="button" class="update" th:href="@{/(id = ${drug.id})}">Update</a> </td>
         </tr>
       </table>
