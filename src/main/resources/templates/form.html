@@ -17,9 +17,15 @@
         <p style="color:red" th:errors="*{price}"> </p>
         <input type="text" placeholder="Price" th:field="*{price}">  
         <p style="color:red" th:errors="*{quantity}"> </p>
-        <input type="text" placeholder="Quantity" th:field="*{quantity}">
-        <p style="color:red;" th:errors="*{barCode}"></p>
-        <input type="text" placeholder="Bar Code" th:field="*{barCode}">
+        <input type="text" th:placeholder="Quantity" th:field="*{quantity}">
+        <p style="color:red;" th:errors="*{supplier}"></p>
+        <select th:field="*{supplier}">
+          <option value="Choose an option">Choose a supplier</option>
+          <option value="B. Melsungen AG">B. Melsungen AG</option>
+          <option value="J & Johnson">J & Johnson</option>
+          <option value="Novartis AG">Novartis AG</option>
+          <option value="Ab. Laboratories">Ab. Laboratories</option>
+        </select>
         <input type="hidden" th:field="*{id}">
         <br><br>
         <input type="submit" value="Submit">
