@@ -15,15 +15,17 @@
       <h2 > Drugs </h2>
       <table id="table"> 
         <tr>
-          <th>Student</th>
-          <th>Subject</th>
-          <th>Score</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Bar Code</th>
         </tr>
-        <tr th:each="grade: ${grades}">
-          <td th:text="${grade.name}"></td>
-          <td th:text="${grade.subject}"></td>
-          <td th:text="${grade.score}"></td>
-          <td> <a role="button" class="update" th:href="@{/(id = ${grade.id})}">Update</a> </td>
+        <tr th:each="drug: ${drugs}">
+          <td th:text="${drug.name}"></td>
+          <td th:text="${drug.price}"></td>
+          <td th:text="${drug.quantity}"></td>
+          <td th:text="${drug.barCode}"></td>
+          <td> <a role="button" class="update" th:href="@{/(id = ${drug.id})}">Update</a> </td>
         </tr>
       </table>
     </div>
