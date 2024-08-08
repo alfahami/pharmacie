@@ -15,10 +15,13 @@ public class Drug {
 
     @Min(value = 0, message = "Price cannot be null")
     private Double price;
+    
+    @Min(value=0, message="Quantity cannot be less or equal 0")
     private int quantity;
     
-    @Size(max=43)
-    private String barcode;
+    @NotBlank(message = "Bar Code cannot be blank")
+    @Size(max=7, message ="Bar Code must contain 7 characters ")
+    private String barCode;
 
 
     public Drug() {
@@ -58,14 +61,12 @@ public class Drug {
         this.quantity = quantity;
     }
 
-    public String getBarcode() {
-        return this.barcode;
+    public String getBarCode() {
+        return this.barCode;
     }
 
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
+    public void setBarCode(String barCode) {
+        this.barCode = barCode;
     }
-
-
     
 }
