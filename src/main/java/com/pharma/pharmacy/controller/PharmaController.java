@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.pharma.pharmacy.Constants;
 import com.pharma.pharmacy.pojo.Drug;
 import com.pharma.pharmacy.service.PharmaService;
 
@@ -20,21 +20,20 @@ public class PharmaController {
     @Autowired
     PharmaService pharmaService;
 
-    @GetMapping("/home")
-    public String getDrugs(Model model) {
+    @GetMapping("/drugs")
+    public String getDrugs(Model model, @RequestParam(required = false) String id) {
         model.addAttribute("drugs", pharmaService.getDrugs());
         return "home";
     }
 
     @GetMapping("/")
     public String getHome() {
-        return "redirect:/home";
+        return "redirect:/drugs";
     }
 
     @GetMapping("/addDrug")
     public String getForm(Model model) {
         model.addAttribute("drug", new Drug());
-        model.addAttribute("suppliers", Constants.SUPPLIERS);
         return "form";
     }
 
@@ -43,7 +42,7 @@ public class PharmaController {
 
          if(bindingResult.hasErrors()) return "form";
          pharmaService.add(drug);
-        return "redirect:/home";
+        return "redirect:/drugs";
 
     }
 }
