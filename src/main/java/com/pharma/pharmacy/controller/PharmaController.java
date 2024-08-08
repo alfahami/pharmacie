@@ -8,16 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.pharma.pharmacy.Constants;
 import com.pharma.pharmacy.pojo.Drug;
 import com.pharma.pharmacy.service.PharmaService;
-
 
 import jakarta.validation.Valid;
 
 @Controller
 public class PharmaController {
-    
+
     @Autowired
     PharmaService pharmaService;
 
@@ -40,14 +38,17 @@ public class PharmaController {
 
     @GetMapping("/editDrug")
     public String editDrug(Model model, @RequestParam(required = true) String id) {
-            model.addAttribute("drug", pharmaService.getDrugById(id) );
-            return "form";
+        model.addAttribute("drug", pharmaService.getDrugById(id));
+        return "form";
     }
 
     @PostMapping("/handleSubmit")
     public String submitForm(@Valid Drug drug, BindingResult bindingResult) {
-         if(bindingResult.hasErrors()) return "form";
-         pharmaService.submitForm(drug);
+        if (pharmaService.isDrugAdded(drug.getName()))
+            bindingResult.rejectValue("name", "", "Drug name already exist");
+        if (bindingResult.hasErrors())
+            return "form";
+        pharmaService.submitForm(drug);
         return "redirect:/drugs";
 
     }

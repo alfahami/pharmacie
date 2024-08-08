@@ -53,4 +53,11 @@ public class PharmaService {
         }
         return Constants.NOT_FOUND;
     }
+
+    public boolean isDrugAdded(String name) {
+        for (Drug drug : getDrugs()) {
+            if(drug.getName().equals(name)) return true;
+        }
+        return false;
+    }
 }
