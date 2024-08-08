@@ -19,12 +19,14 @@
           <th>Price</th>
           <th>Quantity</th>
           <th>Bar Code</th>
+          <th>Total Price</th>
         </tr>
         <tr th:each="drug: ${drugs}">
           <td th:text="${drug.name}"></td>
           <td th:text="${drug.price}"></td>
           <td th:text="${drug.quantity}"></td>
           <td th:text="${drug.barCode}"></td>
+          <td th:text="${drug.price * drug.quantity}"></td>
           <td> <a role="button" class="update" th:href="@{/(id = ${drug.id})}">Update</a> </td>
         </tr>
       </table>
