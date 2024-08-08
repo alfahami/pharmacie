@@ -27,7 +27,7 @@
           <td th:text="${drug.quantity}"></td>
           <td th:text="${drug.supplier}"></td>
           <td th:text="${#numbers.formatCurrency(#numbers.formatDecimal({drug.price * drug.quantity},3, 2))}"></td>
-          <td> <a role="button" class="update" th:href="@{/drugs(id = ${drug.id})}">Update</a> </td>
+          <td> <a role="button" class="update" th:href="@{/editDrug(id = ${drug.id})}">Update</a> </td>
         </tr>
       </table>
     </div>
