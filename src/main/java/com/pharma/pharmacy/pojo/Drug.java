@@ -4,7 +4,6 @@ import java.util.UUID;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 public class Drug {
 
@@ -58,7 +57,6 @@ public class Drug {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
 
     public String getSupplier() {
         return this.supplier;
