@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.pharma.pharmacy.Constants;
 import com.pharma.pharmacy.pojo.Drug;
 import com.pharma.pharmacy.service.PharmaService;
 
@@ -24,7 +25,7 @@ public class PharmaController {
         model.addAttribute("drugs", pharmaService.getDrugs());
         return "home";
     }
-    
+
     @GetMapping("/")
     public String getHome() {
         return "redirect:/home";
@@ -33,6 +34,7 @@ public class PharmaController {
     @GetMapping("/addDrug")
     public String getForm(Model model) {
         model.addAttribute("drug", new Drug());
+        model.addAttribute("suppliers", Constants.SUPPLIERS);
         return "form";
     }
 
